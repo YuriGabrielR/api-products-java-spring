@@ -45,4 +45,16 @@ public class ProdutoController{
 
                 }
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity deletarProduto(@PathVariable String id) {
+        Optional<Product> produtoExistente = repository.findById(id);
+        if (produtoExistente.isPresent()) {
+            repository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
