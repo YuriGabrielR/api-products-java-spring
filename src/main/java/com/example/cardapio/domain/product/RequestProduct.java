@@ -1,5 +1,14 @@
 package com.example.cardapio.domain.product;
 
-public record RequestProduct(String nome, Integer preco, String descricao ) {
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+public record RequestProduct(
+        String id,
+        @NotBlank
+        String nome,
+        @NotNull
+        Integer preco,
+        String descricao ) {
 
 }
